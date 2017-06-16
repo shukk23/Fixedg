@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shukri.fixed.Quickgame">
+
+    <View
+        android:id="@+id/emiter_top_right"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/menus"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="-20dp" />
+
+    <LinearLayout
+        android:id="@+id/menus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/newGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:text="Restart Game"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/quitgame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:text="Quit Game"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/boxes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/menus"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/t1"
+            style="@android:style/Widget.AutoCompleteTextView"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:ems="10"
+            android:inputType="none"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/t3"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/Black"
+            android:textColorHighlight="@color/Blue"
+            android:textColorHint="@color/Brown"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/t2"
+            style="@android:style/Widget.AutoCompleteTextView"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:ems="10"
+            android:inputType="none"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/t3"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/Black"
+            android:textColorHighlight="@color/Blue"
+            android:textColorHint="@color/Brown"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/t3"
+            style="@android:style/Widget.AutoCompleteTextView"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:ems="10"
+            android:inputType="none"
+            android:maxLength="1"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/Black"
+            android:textColorHighlight="@color/Blue"
+            android:textColorHint="@color/Brown"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/t4"
+            style="@android:style/Widget.AutoCompleteTextView"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:ems="10"
+            android:inputType="none"
+            android:maxLength="1"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/Black"
+            android:textColorHighlight="@color/Blue"
+            android:textColorHint="@color/Brown"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gridLayout"
+        android:layout_below="@+id/boxes"
+        android:focusableInTouchMode="false"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/rndm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
+            android:visibility="visible" />
+
+        <ListView
+            android:id="@+id/lv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:cacheColorHint="@color/com_facebook_blue"
+            android:clipToPadding="true"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="-3dp"
+            android:elevation="0dp"
+            android:fitsSystemWindows="true"
+            android:focusable="true"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarDefaultDelayBeforeFade="650"
+            android:scrollbarSize="20dp"
+            android:scrollbarStyle="insideOverlay"
+            android:stackFromBottom="true"
+            android:verticalScrollbarPosition="defaultPosition"
+            tools:listitem="@android:layout/simple_list_item_1" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:columnCount="3">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="2"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="3"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="4"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="5"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="6"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="7"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="8"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1"
+            app:layout_row="2" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="9"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1"
+            app:layout_row="2" />
+
+        <Button
+            android:id="@+id/buttonClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Red"
+            android:fontFamily="sans-serif"
+            android:text="Clear"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:fontFamily="sans-serif"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+            =/>
+
+        <Button
+            android:id="@+id/buttonCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Aquamarine"
+            android:fontFamily="sans-serif"
+            android:text="Check"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_columnWeight="1" />
+    </android.support.v7.widget.GridLayout>
+</RelativeLayout>
