@@ -21,7 +21,8 @@
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -40,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="sans-serif"
-                android:text="Game with 3 numbers"
+                android:text="Loja me 3 numra"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="18sp" />
 
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="sans-serif"
-                android:text="Game with 4 numbers"
+                android:text="Loja me 4 numra"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="18sp" />
 
@@ -60,13 +61,13 @@
             android:id="@+id/dialogOk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OK" />
+            android:text="Vazhdo" />
 
         <Button
             android:id="@+id/dialogClose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel" />
+            android:text="Anulo" />
 
     </LinearLayout>
 

@@ -77,21 +77,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/newGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-            android:text="Restart Game"
-            android:textAlignment="center" />
-
-        <Button
             android:id="@+id/quitgame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-            android:text="Quit Game"
+            android:text="Dil nga loja"
             android:textAlignment="center" />
 
     </LinearLayout>
@@ -366,7 +357,7 @@
             android:layout_height="wrap_content"
             android:background="@color/Red"
             android:fontFamily="sans-serif"
-            android:text="Clear"
+            android:text="Pastro"
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_columnWeight="1" />
@@ -389,7 +380,7 @@
             android:layout_height="wrap_content"
             android:background="@color/Aquamarine"
             android:fontFamily="sans-serif"
-            android:text="Check"
+            android:text="Kontrollo"
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_columnWeight="1" />

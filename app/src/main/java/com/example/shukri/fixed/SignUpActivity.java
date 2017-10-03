@@ -64,8 +64,12 @@ public class SignUpActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
     }
-
+    public void onSignUpClicked(View view) {
+        createNewAccount(email.getText().toString(), password.getText().toString());
+        showProgressDialog();
+    }
     protected void setUpUser() {
+
         user = new User();
         user.setUsername(username.getText().toString());
         user.setName(firstname.getText().toString());
@@ -73,12 +77,6 @@ public class SignUpActivity extends AppCompatActivity {
         user.setEmail(email.getText().toString());
         user.setPassword(password.getText().toString());
     }
-
-    public void onSignUpClicked(View view) {
-        createNewAccount(email.getText().toString(), password.getText().toString());
-        showProgressDialog();
-    }
-
 
     private void createNewAccount(String email, String password) {
         Log.d(TAG, "createNewAccount:" + email);
@@ -104,12 +102,9 @@ public class SignUpActivity extends AppCompatActivity {
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                            Toast.makeText(SignUpActivity.this, "Autentifikimi deshtoi,provoni perseri.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-
-
-
 
                             onAuthenticationSucess(task.getResult().getUser());
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()

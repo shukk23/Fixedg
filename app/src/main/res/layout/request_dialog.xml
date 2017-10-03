@@ -41,7 +41,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_toLeftOf="@+id/requestCancel"
                 android:layout_weight="1"
-                android:text="Accept" />
+                android:text="Prano"/>
 
             <Button
                 android:id="@+id/requestCancel"
@@ -51,7 +51,7 @@
                 android:layout_below="@+id/dialogText"
                 android:layout_centerHorizontal="true"
                 android:layout_weight="1"
-                android:text="Cancel" />
+                android:text="Refuzo"/>
         </LinearLayout>
     </LinearLayout>
 

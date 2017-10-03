@@ -38,28 +38,36 @@ public class RandomNumbers
     public void setRndThree(int rndThree) {
         this.rndThree = rndThree;
     }
-    public void generateNumbers(){
-        ArrayList<Integer> nr=new ArrayList<>();
-        nr.add(0);
-        nr.add(1);
-        nr.add(2);
-        nr.add(3);
-        nr.add(4);
-        nr.add(5);
-        nr.add(6);
-        nr.add(7);
-        nr.add(8);
-        nr.add(9);
 
+    public void generateNumbers(){
+
+        //krijojme nje varg i cili pranon vlera integer
+        ArrayList<Integer> nr=new ArrayList<>();
+
+        //vendosen numrat prej 0-9
+        for(int i = 0;i<=9;i++){
+            nr.add(i);
+
+        }
+
+        //perdorim metoden Random() per te bere zgjedhje te rastesishme
         Random r = new Random();
 
+        //zgjidhet numri i pare i rastesishem nga vargu
         int rndPos1 = r.nextInt(nr.size());
+
+        //numri i pare i zgjedhur hiqet nga vargu
         setRndOne(nr.remove(rndPos1));
 
+        //zgjidhet numri i dyte i rastesishem nga vargu
         int rndPos2 = r.nextInt(nr.size());
+
+        //numri i dyte i zgjedhur hiqet nga vargu
         setRndTwo(nr.remove(rndPos2));
 
+        //zgjidhet numri i trete i rastesishem nga vargu
         int rndPos3 = r.nextInt(nr.size());
+
         setRndThree(nr.remove(rndPos3));
     }
 }

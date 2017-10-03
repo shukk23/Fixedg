@@ -19,8 +19,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position){
         switch (position){
             case 0:
-                Tab1 tab1 = new Tab1();
-                return tab1;
+                Highscores3Numbers highscores3Numbers = new Highscores3Numbers();
+                return highscores3Numbers;
             case 1:
                 Tab2 tab2 = new Tab2();
                 return tab2;

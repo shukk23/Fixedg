@@ -174,21 +174,26 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
+        //Se pari kontrollohet forma ,pra a jane mbushur te gjitha fushat
         if (!validateForm()) {
             return;
         }
 
+        //Pasi te kontrollohet forma dhe pasi nuk eshte gjetur ndonje mangesi atehere shfaqet dialogu
         showProgressDialog();
 
+        //Ne parapavi te dialogut ekzekutohet kjo pjese e kodit
+
+        //Shfrytezohet metodat e Firebase te cilat mundesojne qe te verifikohen te dhenat e shfrytezuesit
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
+
+                        //Nese verifikimi kryhet me sukses starton sesioni dhe shfrytezuesi kalon ne aktivitetin kryesor
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             String uid = mAuth.getCurrentUser().getUid();
@@ -196,13 +201,14 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("user_id", uid);
                             startActivity(intent);
                             finish();
-                        } else {
+                        } else {                        // Ne qofte se kyqja deshton shfaqet nje mesazh se kyqja ka deshtuar
+
                             Log.w(TAG, "signInWithEmail", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "Autentifikimi deshtoi,provoni perseri.",
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        hideProgressDialog();
+                        hideProgressDialog();//Ne fund mbyllet dialogu
                     }
                 });
         //
@@ -244,12 +250,10 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
+
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "Autentifikimi deshtoi,provoni perseri.",
                                     Toast.LENGTH_SHORT).show();
                         }else{
                             String uid=task.getResult().getUser().getUid();
@@ -265,16 +269,10 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             Bundle bundle = new Bundle();
 
-
-//                            bundle.putString("user_id",uid);
-//                            bundle.putString("profile_picture",image);
-//                            Profile_Fragment pf = new Profile_Fragment();
-//                            pf.setArguments(bundle);
                             Log.d("fb",Profile.getCurrentProfile().getId());
                             intent.putExtra("user_id",uid);
                             intent.putExtra("profile_picture",image);
                             startActivity(intent);
-//                            finish();
                         }
 
                         hideProgressDialog();

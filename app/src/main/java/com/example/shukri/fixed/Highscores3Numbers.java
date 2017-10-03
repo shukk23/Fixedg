@@ -34,7 +34,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-public class Tab1 extends android.support.v4.app.Fragment {
+public class Highscores3Numbers extends android.support.v4.app.Fragment {
     ListView lv;
     final String[] score=new String[]{};
     int scoreList;
