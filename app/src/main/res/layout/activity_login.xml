@@ -15,7 +15,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Kyqja"
+                android:textColor="@color/Blue"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:orientation="vertical">
 
@@ -39,7 +54,7 @@
                     android:textColor="@color/Black"
                     android:textColorHint="@color/Black"
                     android:textSize="16dp"
-                    android:typeface="sans" />
+                    android:typeface="sans"/>
 
 
             </LinearLayout>
@@ -57,13 +72,13 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:fontFamily="sans-serif"
-                    android:hint="password "
+                    android:hint="fjalekalimi"
                     android:inputType="textPassword"
                     android:letterSpacing="0.025"
                     android:padding="12dp"
                     android:textColorHint="@color/Black"
                     android:textSize="16dp"
-                    android:typeface="sans" />
+                    android:typeface="sans"/>
 
 
             </LinearLayout>
@@ -74,7 +89,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:orientation="vertical"
-                android:padding="8dp">
+                >
 
                 <Button
                     android:id="@+id/textView3"
@@ -82,17 +97,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0.18"
                     android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
                     android:letterSpacing="0.025"
                     android:onClick="onLoginClicked"
                     android:padding="10dp"
-                    android:text="Sign In"
+                    android:text="Kyquni"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/Black"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"/>
 
                 <Button
                     android:id="@+id/fb"
@@ -100,16 +115,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
 
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0.18"
                     android:letterSpacing="0.025"
                     android:onClick="fblogin"
-                    android:text="Sign in with Facebook"
+                    android:text="Kyquni me Facebook"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/White"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
             </LinearLayout>
 
 
@@ -120,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
             android:gravity="center"
             android:orientation="horizontal">
@@ -130,9 +146,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:letterSpacing="0.025"
-                android:text="Don't have an account?"
+                android:text="Nuk keni llogari ?"
                 android:textColor="@color/Black"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -140,10 +156,10 @@
                 android:layout_marginLeft="5dp"
                 android:letterSpacing="0.025"
                 android:onClick="onSignUpClicked"
-                android:text="Sign up"
+                android:text="Regjistrohuni"
                 android:textColor="@color/Black"
                 android:textSize="14dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
 
         </LinearLayout>

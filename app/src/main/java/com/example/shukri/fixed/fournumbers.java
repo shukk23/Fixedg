@@ -272,19 +272,19 @@ public class fournumbers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(fournumbers.this);
-                builder.setTitle("Restart Game");
-                builder.setMessage("Are you sure to restart the Game ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setTitle("Rifillo Lojen");
+                builder.setMessage("A jeni i sigrt qe te rifillohet loja?");
+                builder.setPositiveButton("Po", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         lv.setAdapter(null);
                         reset();
                         newGame();
-                        Toast.makeText(getApplication(), "New Game Started",
+                        Toast.makeText(getApplication(), "Loja e re ka filluar",
                                 Toast.LENGTH_LONG).show();
                     }
                 });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Anulo", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -309,16 +309,16 @@ public class fournumbers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(fournumbers.this);
-                builder.setTitle("Quit Game");
-                builder.setMessage("Are you sure to quit game ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setTitle("Dil nga loja");
+                builder.setMessage("A jeni i sigurt qe te dilet nga loja ?");
+                builder.setPositiveButton("Po", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(fournumbers.this,MainActivity.class);
                         startActivity(i);
                     }
                 });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Anulo", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -338,7 +338,6 @@ public class fournumbers extends AppCompatActivity {
 
             }
         });
-
 
     }//end of onCreate
     public void UiElements() {
@@ -613,8 +612,8 @@ public class fournumbers extends AppCompatActivity {
     public void startDialog() {
 
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this)
-                .setTitle("Start").setMessage(
-                        "Game is starting ...");
+                .setTitle("").setMessage(
+                        "Loja po fillon ...");
 
         final AlertDialog alert = dialog.create();
         alert.show();

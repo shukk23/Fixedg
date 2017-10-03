@@ -246,19 +246,19 @@ public class Quickgame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(Quickgame.this);
-                builder.setTitle("Restart Game");
-                builder.setMessage("Are you sure to restart the Game ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setTitle("Rifillo Lojen");
+                builder.setMessage("A jeni i sigrt qe te rifillohet loja?");
+                builder.setPositiveButton("Po", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         lv.setAdapter(null);
                         reset();
                         newGame();
-                        Toast.makeText(getApplication(), "New Game Started",
+                        Toast.makeText(getApplication(), "Loja e re ka filluar",
                                 Toast.LENGTH_LONG).show();
                     }
                 });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Anulo", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -283,16 +283,16 @@ public class Quickgame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(Quickgame.this);
-                builder.setTitle("Quit Game");
-                builder.setMessage("Are you sure to quit game ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setTitle("Dil nga loja");
+                builder.setMessage("A jeni i sigurt qe te dilet nga loja ?");
+                builder.setPositiveButton("Po", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(Quickgame.this,MainActivity.class);
                         startActivity(i);
                     }
                 });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Anulo", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -344,25 +344,30 @@ public class Quickgame extends AppCompatActivity {
         rndm.setVisibility(View.GONE);
         enableButtons();
         nr_list.clear();
-        ArrayList<Integer> nr=new ArrayList<>();
-        nr.add(0);
-        nr.add(1);
-        nr.add(2);
-        nr.add(3);
-        nr.add(4);
-        nr.add(5);
-        nr.add(6);
-        nr.add(7);
-        nr.add(8);
-        nr.add(9);
 
+        //krijojme nje varg i cili pranon vlera integer
+        ArrayList<Integer> nr=new ArrayList<>();
+
+        for(int i = 0;i<=9;i++){
+            nr.add(i);
+
+        }
+        //perdorim metoden Random() per te bere zgjedhje te rastesishme
         Random r = new Random();
+
+        //zgjidhet numri i pare i rastesishem nga vargu
         int rndPos1 = r.nextInt(nr.size());
+
+        //numri i pare i zgjedhur hiqet nga vargu
         rnd1 = nr.remove(rndPos1);
 
+        //zgjidhet numri i dyte i rastesishem nga vargu
         int rndPos2 = r.nextInt(nr.size());
+
+        //numri i dyte i zgjedhur hiqet nga vargu
         rnd2 = nr.remove(rndPos2);
 
+        //zgjidhet numri i trete i rastesishem nga vargu
         int rndPos3 = r.nextInt(nr.size());
         rnd3 = nr.remove(rndPos3);
 
@@ -377,7 +382,14 @@ public class Quickgame extends AppCompatActivity {
         int qelluar = 0;
         int fiksuar = 0;
         String msg = "";
+
+        // me t1.getText().toString() i qasemi numrit te pare te insertuar nga shfrytezuesi
+        // me t2.getText().toString() i qasemi numrit te dyte te insertuar nga shfrytezuesi
+        // me t3.getText().toString() i qasemi numrit te trete te insertuar nga shfrytezuesi
+
+        //kontrollohet per numrat e fiksuar te cilat jane dhene nga shfrytezuesi
         if(t1.getText().toString().equalsIgnoreCase(""+rnd1)){
+
             fiksuar++;
 
         }
@@ -389,9 +401,10 @@ public class Quickgame extends AppCompatActivity {
             fiksuar++;
 
         }
+
+        //kontrollohet per numrat e qelluar te cilat jane dhene nga shfrytezuesi
         if (t1.getText().toString().equalsIgnoreCase(""+rnd2) ){
             qelluar++;
-            //msg+=fiksuar+" fiksuar," + qelluar + " qelluar";
 
         }
         if (t1.getText().toString().equalsIgnoreCase(""+rnd3)){
@@ -399,7 +412,6 @@ public class Quickgame extends AppCompatActivity {
         }
         if (t2.getText().toString().equalsIgnoreCase(""+rnd1) ){
             qelluar++;
-            //msg+=fiksuar+" fiksuar," + qelluar + " qelluar";
 
         }
         if (t2.getText().toString().equalsIgnoreCase(""+rnd3)){
@@ -408,12 +420,13 @@ public class Quickgame extends AppCompatActivity {
         }
         if (t3.getText().toString().equalsIgnoreCase(""+rnd2) ){
             qelluar++;
-            //msg+=fiksuar+" fiksuar," + qelluar + " qelluar";
 
         }
         if (t3.getText().toString().equalsIgnoreCase(""+rnd1)){
             qelluar++;
         }
+
+
         if(fiksuar==3){
             qelluar=0;
             rndm.setVisibility(View.VISIBLE);
@@ -461,12 +474,7 @@ public class Quickgame extends AppCompatActivity {
                                 Toast.makeText(getApplication(),"Your new highscore is : "+score,Toast.LENGTH_SHORT).show();
 
                             }
-//                            if(dataSnapshot.hasChild(finalEmail)==false){
-//
-//                                dbRef.child(finalEmail).setValue(pik);
-//                                Toast.makeText(getApplication(),"Added",Toast.LENGTH_SHORT).show();
-//
-//                            }
+
                         }
                     }
 
@@ -508,17 +516,17 @@ public class Quickgame extends AppCompatActivity {
 
         String t="";
         if((nr_list.size()+1)>1){
-            t+= "tries";
+            t+= "tentime";
 
         }
         else{
-            t+="try";
+            t+="tentim";
 
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(Quickgame.this);
-        builder.setTitle("Game Finished");
-        builder.setMessage("You finished in : "+(nr_list.size()+1)+" "+t+"\n"+"Start new game or go to main menu");
-        builder.setPositiveButton("New Game", new DialogInterface.OnClickListener() {
+        builder.setTitle("Loja mbaroi");
+        builder.setMessage("Ju perfunduat me: "+(nr_list.size()+1)+" "+t+"\n"+"Fillo loje te re ose kthehu ne menyne kryesore");
+        builder.setPositiveButton("Loje e re", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 lv.setAdapter(null);
@@ -526,7 +534,7 @@ public class Quickgame extends AppCompatActivity {
                 newGame();
             }
         });
-        builder.setNegativeButton("Main Menu", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Menyja Kryesore", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent i = new Intent(getApplicationContext(),MainActivity.class);
@@ -537,13 +545,13 @@ public class Quickgame extends AppCompatActivity {
         if (p != null) {
 
             final String finalT = t;
-            builder.setNeutralButton("Share your score", new DialogInterface.OnClickListener() {
+            builder.setNeutralButton("Shperndaj rezultatin", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_TEXT, "Finished in : "+(nr_list.size()+1)+" "+ finalT);
-                    startActivity(Intent.createChooser(intent, "Share with"));
+                    intent.putExtra(Intent.EXTRA_TEXT, "Perfunduar me : "+(nr_list.size()+1)+" "+ finalT);
+                    startActivity(Intent.createChooser(intent, "Shperndaj me : "));
                 }
             });}
         builder.setCancelable(false);
@@ -556,8 +564,8 @@ public class Quickgame extends AppCompatActivity {
     public void startDialog() {
 
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this)
-                .setTitle("Start").setMessage(
-                        "Game is starting ...");
+                .setTitle("").setMessage(
+                        "Loja po fillon ...");
 
         final AlertDialog alert = dialog.create();
         alert.show();

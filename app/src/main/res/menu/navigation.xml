@@ -6,7 +6,7 @@
         android:id="@+id/navigation_profile"
         android:checked="false"
         android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="Profile"
+        android:title="Profili"
         android:visible="true" />
 
     <item
@@ -14,15 +14,15 @@
         android:checked="true"
         android:enabled="true"
         android:icon="@drawable/ic_play_arrow_black_24dp"
-        android:title="Play" />
+        android:title="Luaj" />
 
     <item
         android:id="@+id/navigation_highscores"
         android:icon="@drawable/ic_equalizer_black_24dp"
-        android:title="Highscores" />
+        android:title="Rezultatet" />
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings_black_24dp"
-        android:title="Settings" />
+        android:title="Cilesimet" />
 
 </menu>

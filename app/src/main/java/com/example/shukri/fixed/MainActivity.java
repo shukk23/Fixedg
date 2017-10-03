@@ -132,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.navigation_highscores:
-                        Tab1 tab1 = new Tab1();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.content,tab1).commit();
+                        Highscores3Numbers highscores3Numbers = new Highscores3Numbers();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.content, highscores3Numbers).commit();
                         item.setChecked(true);
 
                         return true;

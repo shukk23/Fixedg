@@ -73,6 +73,16 @@ public class Play_Fragment extends android.support.v4.app.Fragment {
     String progressMessage;
     String ReceiverId;
 
+    public boolean isRequestConfirmation() {
+        return requestConfirmation;
+    }
+
+    public void setRequestConfirmation(boolean requestConfirmation) {
+        this.requestConfirmation = requestConfirmation;
+    }
+
+    boolean requestConfirmation;
+
     public void setRoomId(String roomId) {
         RoomId = roomId;
     }
@@ -264,9 +274,9 @@ testb = (Button)v.findViewById(R.id.button15);
                                 Log.d("dlg", "lg clicked");
 
                                 AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
-                                builder1.setTitle("Log out");
-                                builder1.setMessage("Are you sure you want to log out?");
-                                builder1.setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+                                builder1.setTitle("Çkyqja");
+                                builder1.setMessage("A jeni i sigurt per çkyqje?");
+                                builder1.setPositiveButton("Çkyqu", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         // continue
                                         FirebaseAuth.getInstance().signOut();
@@ -277,7 +287,7 @@ testb = (Button)v.findViewById(R.id.button15);
                                         user_info.setVisibility(View.INVISIBLE);
                                     }
                                 });
-                                builder1.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                builder1.setNegativeButton("Anulo", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         // do nothing
                                     }
@@ -317,7 +327,7 @@ testb = (Button)v.findViewById(R.id.button15);
     public void showDialog(){
         final Dialog dialog = new Dialog(getActivity(),R.style.Dialog);
         dialog.setContentView(R.layout.dialoglayout);
-        dialog.setTitle("Room Type");
+        dialog.setTitle("Tipi i lojes");
         Button dialogClose = (Button)dialog.findViewById(R.id.dialogClose);
         final Button dialogOk = (Button)dialog.findViewById(R.id.dialogOk);
 
@@ -349,7 +359,7 @@ testb = (Button)v.findViewById(R.id.button15);
 
 
                    showOnlinePlayersDialog();
-                   Toast.makeText(getActivity(),"Room created",Toast.LENGTH_SHORT).show();
+                   Toast.makeText(getActivity(),"Loja u krijua",Toast.LENGTH_SHORT).show();
 
                }
                 if (radioButton.getText().toString().contains("4")){
@@ -415,7 +425,7 @@ testb = (Button)v.findViewById(R.id.button15);
             dialog.setContentView(R.layout.request_dialog);
 
 
-            dialog.setTitle("Game Request");
+            dialog.setTitle("Ftese per loje");
             usersRef.child(senderId).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -432,7 +442,7 @@ testb = (Button)v.findViewById(R.id.button15);
                     }
                     TextView dialogText = (TextView) dialog.findViewById(R.id.dialogText);
 
-                    dialogText.setText("Request from : " + senderName);
+                    dialogText.setText("Ftese per loje nga : " + senderName);
 
                 }
 
@@ -445,7 +455,7 @@ testb = (Button)v.findViewById(R.id.button15);
             Log.d("senderName", "" + senderName);
 
             Button requestCancel = (Button) dialog.findViewById(R.id.requestCancel);
-            Button requestAccept = (Button) dialog.findViewById(R.id.requestAccept);
+            final Button requestAccept = (Button) dialog.findViewById(R.id.requestAccept);
             final Intent i = new Intent(getActivity(), MultiThree.class);
 
             requestCancel.setOnClickListener(new View.OnClickListener() {
@@ -453,35 +463,43 @@ testb = (Button)v.findViewById(R.id.button15);
                 public void onClick(View v) {
                     dialog.dismiss();
                     deleteRequest();
+                    Log.d("refuzuar","true");
+                    hideProgresDialog();
+                    setRequestConfirmation(false);
+
+
                 }
             });
             requestAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialog.dismiss();
-                    deleteRequest();
                     acceptRequest();
+                    dialog.dismiss();
+//                    deleteRequest();
                     showProgressDialog();
-//               createRoom();
-//                    final int secs = 3;
-//                    new CountDownTimer((secs + 1) * 1000, 1000) {
+                    i.putExtra("playerone", "" + getSenderId().toString());
+                    setRequestConfirmation(true);
+//                    startActivity(i);
+////               createRoom();
+////                    final int secs = 3;
+////                    new CountDownTimer((secs + 1) * 1000, 1000) {
+////
+////                        @Override
+////                        public void onTick(long millisUntilFinished) {
+////
+////
+////                        }
+////
+////                        @Override
+////                        public void onFinish() {
+////
+////
+////
+////                        }
+////                    }.start();
 //
-//                        @Override
-//                        public void onTick(long millisUntilFinished) {
 //
-//
-//                        }
-//
-//                        @Override
-//                        public void onFinish() {
-//
-//
-//
-//                        }
-//                    }.start();
-
-
-//                i.putExtra("playertwo",""+mAuth.getCurrentUser().getUid().toString());
+////                i.putExtra("playertwo",""+mAuth.getCurrentUser().getUid().toString());
 
                     Log.d("playerone", "" + getSenderId().toString());
                     Log.d("playertwo", "" + mAuth.getCurrentUser().getUid().toString());
@@ -494,7 +512,7 @@ testb = (Button)v.findViewById(R.id.button15);
                 @Override
                 public void onTick(long millisUntilFinished) {
 
-                    dialog.setTitle("Request closing in : " + (int) (millisUntilFinished * .001f));
+                    dialog.setTitle("Ftesa refuzohet ne : " + (int) (millisUntilFinished * .001f));
 
                 }
 
@@ -502,9 +520,12 @@ testb = (Button)v.findViewById(R.id.button15);
                 public void onFinish() {
                     i.putExtra("playerone", "" + getSenderId().toString());
                     hideProgresDialog();
-                    startActivity(i);
-                    deleteRequest();
                     dialog.dismiss();
+                    if (isRequestConfirmation()) {
+                        startActivity(i);
+                    }
+//                    deleteRequest();
+
                 }
             }.start();
 
@@ -547,7 +568,7 @@ testb = (Button)v.findViewById(R.id.button15);
          DatabaseReference dbRef = mDatabase.getReference("rooms");
         RandomNumbers randomNumbers = new RandomNumbers();
 
-//room setup names and photos
+        //room setup names and photos
         dbRef.child(getSenderId()+" vs "+mAuth.getCurrentUser().getUid()).child("Players").child(mAuth.getCurrentUser().getUid()).child("name").setValue(mAuth.getCurrentUser().getDisplayName());
         dbRef.child(getSenderId()+" vs "+mAuth.getCurrentUser().getUid()).child("Players").child(mAuth.getCurrentUser().getUid()).child("photo").setValue(getPhotourl());
         dbRef.child(getSenderId()+" vs "+mAuth.getCurrentUser().getUid()).child("Players").child(getSenderId()).child("name").setValue(getSenderName());
@@ -571,7 +592,7 @@ testb = (Button)v.findViewById(R.id.button15);
 
         setRoomId(getSenderId()+" vs "+mAuth.getCurrentUser().getUid());
 
-        requestsRef.child(mAuth.getCurrentUser().getUid()).removeValue();
+//        requestsRef.child(mAuth.getCurrentUser().getUid()).removeValue();
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor editor = pref.edit();
@@ -583,6 +604,7 @@ testb = (Button)v.findViewById(R.id.button15);
 
 
     }
+
     public void showOnlinePlayersDialog(){
 
 
@@ -590,15 +612,12 @@ testb = (Button)v.findViewById(R.id.button15);
         dialog.setContentView(R.layout.online_players_list);
         final SwipeRefreshLayout swipeContainer;
 
-        dialog.setTitle("Online Players");
+        dialog.setTitle("Lojtaret Online");
         swipeContainer = (SwipeRefreshLayout) dialog.findViewById(R.id.swipeContainer);
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Your code to refresh the list here.
-                // Make sure you call swipeContainer.setRefreshing(false)
-                // once the network request has completed successfully.
 
                 getUsers();
                 swipeContainer.setRefreshing(false);
@@ -612,7 +631,7 @@ testb = (Button)v.findViewById(R.id.button15);
 
 
 
-        dialog.setTitle("Send Request ");
+        dialog.setTitle("Dergo Ftese");
         listv = (ListView) dialog.findViewById(R.id.listv);
         arrayList = new ArrayList<>();
         customListAdapter = new CustomListAdapter(getActivity(), R.layout.listview_item, arrayList);
@@ -648,24 +667,31 @@ testb = (Button)v.findViewById(R.id.button15);
                 int j = 0;
                 final ArrayList<String> idString = new ArrayList<String>(length);
 
+                if (dataSnapshot.getChildrenCount()<2){
+                    Toast.makeText(getActivity(), "Nuk ka lojtar online", Toast.LENGTH_SHORT).show();
+
+                }
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+
                     if (!ds.getKey().equals(mAuth.getCurrentUser().getUid())) {
                         if (ds.child("status").getValue().equals("Online")) {
-                            String name = ds.child("name").getValue().toString();
-                            if (ds.hasChild("lastname") == true) {
-//                                photoUrl = ds.child("photo").getValue().toString();
+                            if (ds.hasChild("name")) {
+                                String name = ds.child("name").getValue().toString();
+                                if (ds.hasChild("lastname") == true) {
 
-                                String lastname = ds.child("lastname").getValue().toString();
-                                idString.add(i, ds.child("id").getValue().toString());
-                                i++;
-                                arrayList.add(new Players(ds.child("photo").getValue().toString(), name + " " + lastname));
+                                    String lastname = ds.child("lastname").getValue().toString();
+                                    idString.add(i, ds.child("id").getValue().toString());
+                                    i++;
+                                    arrayList.add(new Players(ds.child("photo").getValue().toString(), name + " " + lastname));
 
-                            }
-                            if (ds.hasChild("lastname") == false) {
-                                idString.add(i, ds.child("id").getValue().toString());
-                                i++;
-                                arrayList.add(new Players(ds.child("photo").getValue().toString(), name));
+                                }
+                                if (ds.hasChild("lastname") == false) {
+                                    idString.add(i, ds.child("id").getValue().toString());
+                                    i++;
+                                    arrayList.add(new Players(ds.child("photo").getValue().toString(), name));
 
+                                }
                             }
 
                         }
@@ -711,11 +737,11 @@ testb = (Button)v.findViewById(R.id.button15);
                 listv.setAdapter(customListAdapter);
                 listv.setTextFilterEnabled(true);
 
-                if (arrayList.size() < 1) {
-                    Toast.makeText(getActivity(), "No Online Players", Toast.LENGTH_SHORT).show();
-
-
-                }
+//                if (arrayList.size() < 1) {
+//                    Toast.makeText(getActivity(), "Nuk ka lojtar online", Toast.LENGTH_SHORT).show();
+//
+//
+//                }
 //                            listv.setAdapter(picarrayAdapter);
             }
 
@@ -730,7 +756,7 @@ testb = (Button)v.findViewById(R.id.button15);
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getActivity(),R.style.Dialog);
 
-            mProgressDialog.setMessage("Waiting for response");
+            mProgressDialog.setMessage("Ju lutem prisni");
             mProgressDialog.setIndeterminate(true);
         }
 
@@ -743,6 +769,7 @@ testb = (Button)v.findViewById(R.id.button15);
     }
     public void isAccepted(){
 
+        final boolean isAccepted;
         Firebase roomsRef,requestRef,dbref;
         dbref = new Firebase("https://fixed-7dac1.firebaseio.com/");
         requestRef = new Firebase("https://fixed-7dac1.firebaseio.com/requests");
@@ -750,7 +777,7 @@ testb = (Button)v.findViewById(R.id.button15);
         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("requests").hasChild(mAuth.getCurrentUser().getUid())==false) {
+//                if (dataSnapshot.child("requests").hasChild(mAuth.getCurrentUser().getUid())==false) {
                     if (dataSnapshot.child("rooms").child(mAuth.getCurrentUser().getUid()+" vs "+getReceiverId()).child("Players").getChildrenCount() == 2) {
                         hideProgresDialog();
 
@@ -760,22 +787,21 @@ testb = (Button)v.findViewById(R.id.button15);
                         editor.putString("roomID",""+mAuth.getCurrentUser().getUid().toString()+" vs "+getReceiverId());
                         editor.apply();
 
-                            Toast.makeText(getActivity(), "Accepted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Pranuar", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(getActivity(), MultiThree.class);
 
-
-//                        Toast.makeText(getActivity(), "Room id : "+getRoomId(), Toast.LENGTH_SHORT).show();
+                        //                        Toast.makeText(getActivity(), "Room id : "+getRoomId(), Toast.LENGTH_SHORT).show();
                         startActivity(i);
                         getActivity().finish();
                     }
                     else {
                         hideProgresDialog();
-                        Toast.makeText(getActivity(), "Rejected", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Refuzuar", Toast.LENGTH_SHORT).show();
                         }
 
 
                     }
-                }
+//                }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {

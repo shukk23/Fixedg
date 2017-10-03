@@ -116,9 +116,9 @@ public class Profile_Fragment extends android.support.v4.app.Fragment {
                             Log.d("dlg", "lg clicked");
 
                             AlertDialog.Builder builder1=new AlertDialog.Builder(getActivity());
-                            builder1 .setTitle("Log out");
-                            builder1.setMessage("Are you sure you want to log out?");
-                            builder1  .setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+                            builder1 .setTitle("Çkyqja");
+                            builder1.setMessage("A deshironi te çkyqeni");
+                            builder1  .setPositiveButton("Çkyqu", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // continue
                                     FirebaseAuth.getInstance().signOut();
@@ -134,7 +134,7 @@ public class Profile_Fragment extends android.support.v4.app.Fragment {
 
                                 }
                             });
-                            builder1    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            builder1    .setNegativeButton("Anulo", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // do nothing
                                 }

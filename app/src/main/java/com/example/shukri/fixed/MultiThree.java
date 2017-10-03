@@ -407,7 +407,7 @@ public class MultiThree extends AppCompatActivity {
 //                    startActivity(i);
 //                    finish();
 //                    }
-                    Toast.makeText(getApplicationContext(),"2 Players",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"2 Players",Toast.LENGTH_SHORT).show();
                     for (DataSnapshot ds : dataSnapshot.child("Players").getChildren()){
                         if (ds.getKey().equals(mAuth.getCurrentUser().getUid())){
                             playerOneText.setText(ds.child("name").getValue().toString());
@@ -667,7 +667,7 @@ public class MultiThree extends AppCompatActivity {
 
         }
 
-    private void getOpponentsTries(){
+    public void getOpponentsTries(){
         final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("rooms/");
 
         dbRef.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
@@ -680,7 +680,7 @@ public class MultiThree extends AppCompatActivity {
                         String oTry3 = String.valueOf(dataSnapshot.child(getRoomid()).child("tries").child(getpTwoId()).getValue().toString().charAt(2));
 
                         checkOpponentsTries(oTry1, oTry2, oTry3);
-
+                        stopCountdown();
                         startCountDown();
                         checkWinner();
 
